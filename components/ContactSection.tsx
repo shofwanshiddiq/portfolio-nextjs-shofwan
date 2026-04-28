@@ -3,10 +3,10 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 
 const socials = [
-  { icon: '✉', label: 'Email', value: 'shofwanjimenez@gmail.com', href: 'mailto:shofwanjimenez@gmail.com', color: '#c9a84c' },
-  { icon: 'in', label: 'LinkedIn', value: '/in/shofwanshiddiq', href: 'https://www.linkedin.com/in/shofwanshiddiq/', color: '#4dd9e8' },
-  { icon: '<>', label: 'GitHub', value: '/shofwanshiddiq', href: 'https://github.com/shofwanshiddiq/', color: '#7b6cf6' },
-  { icon: '◎', label: 'Instagram', value: '@shofwanshiddiq', href: 'https://instagram.com/shofwanshiddiq/', color: '#e85a8a' },
+  { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg', label: 'Email', value: 'shofwanjimenez@gmail.com', href: 'mailto:shofwanjimenez@gmail.com', color: '#c9a84c' },
+  { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg', label: 'LinkedIn', value: 'shofwanshiddiq', href: 'https://www.linkedin.com/in/shofwanshiddiq/', color: '#4dd9e8' },
+  { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', label: 'GitHub', value: 'shofwanshiddiq', href: 'https://github.com/shofwanshiddiq/', color: '#7b6cf6' },
+  { icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png', label: 'Instagram', value: 'shofwanshiddiq', href: 'https://instagram.com/shofwanshiddiq/', color: '#e85a8a' },
 ];
 
 export default function ContactSection() {
@@ -69,31 +69,17 @@ export default function ContactSection() {
               fontFamily: 'DM Sans', fontSize: '0.9rem', lineHeight: 1.9,
               opacity: 0.6, marginBottom: 40, maxWidth: 380,
             }}>
-              Open to full-time roles, freelance projects, and interesting collaborations. Whether you need backend architecture, a full product, or security consulting — let&apos;s build something.
+              Open to freelance projects, and collaborations.
             </p>
 
             {/* Availability */}
-            <motion.div
-              animate={{ boxShadow: ['0 0 0px rgba(122,232,110,0)', '0 0 20px rgba(122,232,110,0.1)', '0 0 0px rgba(122,232,110,0)'] }}
-              transition={{ repeat: Infinity, duration: 3 }}
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: 12,
-                background: 'rgba(122,232,110,0.06)',
-                border: '1px solid rgba(122,232,110,0.2)',
-                padding: '12px 24px',
-                borderRadius: 8,
-              }}
-            >
+            
               <motion.div
                 animate={{ opacity: [1, 0.3, 1] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
                 style={{ width: 7, height: 7, borderRadius: '50%', background: '#7ae86e' }}
               />
-              <span style={{ fontFamily: 'DM Mono', fontSize: '0.65rem', color: '#7ae86e', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                Available for work
-              </span>
             </motion.div>
-          </motion.div>
 
           {/* Right: contact list */}
           <div>
@@ -120,14 +106,21 @@ export default function ContactSection() {
                 <div style={{
                   width: 42, height: 42, flexShrink: 0,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'DM Mono', fontSize: '0.7rem', fontWeight: 500,
-                  color: hov === i ? '#000' : s.color,
-                  background: hov === i ? s.color : s.color + '12',
+                  color: s.color,
+                  background: s.color + '12',
                   border: `1px solid ${s.color}30`,
                   transition: 'all 0.3s',
                   borderRadius: 8,
                 }}>
-                  {s.icon}
+                  <img 
+                    src={s.icon} 
+                    alt={s.label}
+                    style={{ 
+                      width: 24, 
+                      height: 24, 
+                      objectFit: 'contain',
+                    }}
+                  />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontFamily: 'DM Mono', fontSize: '0.55rem', letterSpacing: '0.15em', opacity: 0.4, textTransform: 'uppercase', marginBottom: 3 }}>{s.label}</div>

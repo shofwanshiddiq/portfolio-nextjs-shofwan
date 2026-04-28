@@ -156,7 +156,7 @@ export default function HomeSection() {
               textTransform: 'uppercase', marginBottom: 12,
             }}
           >
-            ILLUSTRATION · SOFTWARE ENGINEERING
+            SOFTWARE ENGINEER
           </motion.div>
 
           <motion.h1
@@ -184,7 +184,6 @@ export default function HomeSection() {
               textTransform: 'uppercase',
             }}
           >
-            · · GENERATIVE ENGINEERING · ·
           </motion.div>
         </div>
       </motion.div>

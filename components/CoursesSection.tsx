@@ -5,16 +5,16 @@ import { useRef, useState } from 'react';
 type Cat = 'all' | 'cybersecurity' | 'backend' | 'language';
 
 const courses = [
-  { title: 'Cybersecurity at Dibimbing', desc: 'Learning cybersecurity fundamentals and offensive security practices, including governance, networking, cryptography, and penetration testing. Identification of web and infrastructure vulnerabilities such as injection attacks, SSRF, broken access control, security misconfigurations, and DoS.', tech: ['Linux', 'Kali Linux', 'Burpsuite'], cat: 'cybersecurity' as Cat, img: '/mockup_7.png', accent: '#e85a8a', year: '2025-2026', num: '01', cert: 'https://github.com/shofwanshiddiq/cybersecurity-portfolio-shofwan' },
-  { title: 'Backend Golang Developer at Dibimbing', desc: 'Focusing on golang backend development integrated with MySQL for relational database and MongoDB for non-relational database through RESTful API, also utilizing Docker for containerization.', tech: ['Golang', 'MySQL', 'MongoDB', 'Docker'], cat: 'backend' as Cat, img: '/mockup_8.png', accent: '#4dd9e8', year: '2024-2025', num: '02', cert: 'https://dibimbing.id/certificate-validation?cn=201029GO02051814' },
-  { title: 'English for Professional at Dibimbing', desc: 'Intensive English for professionals classes, focusing on enhancing workplace communication, professional writing, presentations, job interviews, and practical speaking skills.', tech: ['English', 'Communication', 'Professional'], cat: 'language' as Cat, img: '/mockup_9.png', accent: '#7ae86e', year: '2025', num: '03', cert: 'https://dibimbing-lms-dev.s3.ap-southeast-1.amazonaws.com/1753888801550-Muhammad-Shofwan-Shiddiq.pdf' },
-  { title: 'Frontend Developer (React) - HackerRank', desc: 'Frontend Developer certification covering React fundamentals, component lifecycle, state management, hooks, and modern React patterns.', tech: ['React', 'JavaScript', 'Frontend'], cat: 'backend' as Cat, img: '/mockup_10.png', accent: '#61dafb', year: '2025', num: '04', cert: 'https://www.hackerrank.com/certificates/8ab4262e386d' },
-  { title: 'CSS (Basic) - HackerRank', desc: 'CSS fundamentals certification covering selectors, box model, flexbox, grid, and responsive design principles.', tech: ['CSS', 'Frontend', 'Design'], cat: 'backend' as Cat, img: '/mockup_11.png', accent: '#c9a84c', year: '2025', num: '05', cert: 'https://www.hackerrank.com/certificates/1acfe14d372e' },
-  { title: 'JavaScript (Basic) - HackerRank', desc: 'JavaScript fundamentals certification covering variables, functions, arrays, objects, and ES6+ features.', tech: ['JavaScript', 'Frontend', 'Programming'], cat: 'backend' as Cat, img: '/mockup_12.png', accent: '#e8724a', year: '2025', num: '06', cert: 'https://www.hackerrank.com/certificates/ffb62f8a6517' },
-  { title: 'Go (Basic) - HackerRank', desc: 'Go programming fundamentals certification covering syntax, data structures, concurrency, and Go best practices.', tech: ['Golang', 'Backend', 'Programming'], cat: 'backend' as Cat, img: '/mockup_7.png', accent: '#4dd9e8', year: '2025', num: '07', cert: 'https://www.hackerrank.com/certificates/29d9659ae877' },
-  { title: 'SQL (Basic) - HackerRank', desc: 'SQL fundamentals certification covering queries, joins, aggregations, and database operations.', tech: ['SQL', 'Database', 'Backend'], cat: 'backend' as Cat, img: '/mockup_8.png', accent: '#7b6cf6', year: '2025', num: '08', cert: 'https://www.hackerrank.com/certificates/d1391b52a8a0' },
-  { title: 'EF SET (C1 Advanced)', desc: 'English proficiency test certification demonstrating C1 Advanced level in English language skills.', tech: ['English', 'Language', 'Communication'], cat: 'language' as Cat, img: '/mockup_9.png', accent: '#7ae86e', year: '2025', num: '09', cert: 'https://cert.efset.org/en/eA3VT6' },
-  { title: 'IELTS Preparation', desc: 'IELTS preparation course covering all four skills: listening, reading, writing, and speaking for academic and professional purposes.', tech: ['English', 'IELTS', 'Language'], cat: 'language' as Cat, img: '/mockup_10.png', accent: '#e85a8a', year: '2024', num: '10', cert: 'https://www.linkedin.com/in/shofwanshiddiq/overlay/Certifications/1765556513/treasury/?profileId=ACoAAC7H4aUBnWbwWlT4KZOeIIaoRBCbnAqy4Dw' },
+  { title: 'Cybersecurity at Dibimbing', desc: 'Learning cybersecurity fundamentals and offensive security practices, including governance, networking, cryptography, and penetration testing. Identification of web and infrastructure vulnerabilities such as injection attacks, SSRF, broken access control, security misconfigurations, and DoS.', tech: ['Linux', 'Kali Linux', 'Burpsuite'], cat: 'cybersecurity' as Cat, logo: '/dibimbig.png', accent: '#e85a8a', year: '2025-2026', num: '01', cert: 'https://github.com/shofwanshiddiq/cybersecurity-portfolio-shofwan' },
+  { title: 'Backend Golang Developer at Dibimbing', desc: 'Focusing on golang backend development integrated with MySQL for relational database and MongoDB for non-relational database through RESTful API, also utilizing Docker for containerization.', tech: ['Golang', 'MySQL', 'MongoDB', 'Docker'], cat: 'backend' as Cat, logo: '/dibimbig.png', accent: '#4dd9e8', year: '2024-2025', num: '02', cert: 'https://dibimbing.id/certificate-validation?cn=201029GO02051814' },
+  { title: 'English for Professional at Dibimbing', desc: 'Intensive English for professionals classes, focusing on enhancing workplace communication, professional writing, presentations, job interviews, and practical speaking skills.', tech: ['English', 'Communication', 'Professional'], cat: 'language' as Cat, logo: '/dibimbig.png', accent: '#7ae86e', year: '2025', num: '03', cert: 'https://dibimbing-lms-dev.s3.ap-southeast-1.amazonaws.com/1753888801550-Muhammad-Shofwan-Shiddiq.pdf' },
+  { title: 'Frontend Developer (React) - HackerRank', desc: 'Frontend Developer certification covering React fundamentals, component lifecycle, state management, hooks, and modern React patterns.', tech: ['React', 'JavaScript', 'Frontend'], cat: 'backend' as Cat, logo: 'https://hrcdn.net/fcore/assets/brand/logo-new-white-green-a5cb16e0ae.svg', accent: '#61dafb', year: '2025', num: '04', cert: 'https://www.hackerrank.com/certificates/8ab4262e386d' },
+  { title: 'CSS (Basic) - HackerRank', desc: 'CSS fundamentals certification covering selectors, box model, flexbox, grid, and responsive design principles.', tech: ['CSS', 'Frontend', 'Design'], cat: 'backend' as Cat, logo: 'https://hrcdn.net/fcore/assets/brand/logo-new-white-green-a5cb16e0ae.svg', accent: '#c9a84c', year: '2025', num: '05', cert: 'https://www.hackerrank.com/certificates/1acfe14d372e' },
+  { title: 'JavaScript (Basic) - HackerRank', desc: 'JavaScript fundamentals certification covering variables, functions, arrays, objects, and ES6+ features.', tech: ['JavaScript', 'Frontend', 'Programming'], cat: 'backend' as Cat, logo: 'https://hrcdn.net/fcore/assets/brand/logo-new-white-green-a5cb16e0ae.svg', accent: '#e8724a', year: '2025', num: '06', cert: 'https://www.hackerrank.com/certificates/ffb62f8a6517' },
+  { title: 'Go (Basic) - HackerRank', desc: 'Go programming fundamentals certification covering syntax, data structures, concurrency, and Go best practices.', tech: ['Golang', 'Backend', 'Programming'], cat: 'backend' as Cat, logo: 'https://hrcdn.net/fcore/assets/brand/logo-new-white-green-a5cb16e0ae.svg', accent: '#4dd9e8', year: '2025', num: '07', cert: 'https://www.hackerrank.com/certificates/29d9659ae877' },
+  { title: 'SQL (Basic) - HackerRank', desc: 'SQL fundamentals certification covering queries, joins, aggregations, and database operations.', tech: ['SQL', 'Database', 'Backend'], cat: 'backend' as Cat, logo: 'https://hrcdn.net/fcore/assets/brand/logo-new-white-green-a5cb16e0ae.svg', accent: '#7b6cf6', year: '2025', num: '08', cert: 'https://www.hackerrank.com/certificates/d1391b52a8a0' },
+  { title: 'EF SET (C1 Advanced)', desc: 'English proficiency test certification demonstrating C1 Advanced level in English language skills.', tech: ['English', 'Language', 'Communication'], cat: 'language' as Cat, logo: 'https://www.efset.org/static/img/efset-logo-white.svg', accent: '#7ae86e', year: '2025', num: '09', cert: 'https://cert.efset.org/en/eA3VT6' },
+  { title: 'IELTS Preparation', desc: 'IELTS preparation course covering all four skills: listening, reading, writing, and speaking for academic and professional purposes.', tech: ['English', 'IELTS', 'Language'], cat: 'language' as Cat, logo: '/dibimbig.png', accent: '#e85a8a', year: '2024', num: '10', cert: 'https://www.linkedin.com/in/shofwanshiddiq/overlay/Certifications/1765556513/treasury/?profileId=ACoAAC7H4aUBnWbwWlT4KZOeIIaoRBCbnAqy4Dw' },
 ];
 
 const tabs = [
@@ -43,23 +43,47 @@ function CourseCard({ c, i }: { c: typeof courses[0]; i: number }) {
         borderRadius: 8,
       }}
     >
-      {/* Image */}
-      <div style={{ height: 200, overflow: 'hidden', background: 'var(--navy-light)', position: 'relative' }}>
+      {/* Logo Header */}
+      <div style={{ 
+        height: 140, 
+        overflow: 'hidden', 
+        background: `linear-gradient(135deg, ${c.accent}15, var(--navy-light))`, 
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '30px',
+      }}>
         <motion.img
-          src={c.img} alt={c.title}
-          animate={{ scale: hov ? 1.06 : 1 }}
+          src={c.logo} 
+          alt={c.title}
+          animate={{ scale: hov ? 1.08 : 1 }}
           transition={{ duration: 0.5 }}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', filter: `saturate(${hov ? 1.1 : 0.7}) brightness(${hov ? 0.9 : 0.7})`, transition: 'filter 0.5s' }}
-          onError={e => { (e.target as HTMLImageElement).parentElement!.style.background = `radial-gradient(circle at 30% 50%, ${c.accent}20, var(--navy-light))`; (e.target as HTMLImageElement).style.display = 'none'; }}
+          style={{ 
+            maxWidth: '70%', 
+            maxHeight: '70%', 
+            objectFit: 'contain',
+            filter: 'brightness(1.2)',
+          }}
+          onError={e => { 
+            (e.target as HTMLImageElement).style.display = 'none';
+            const parent = (e.target as HTMLImageElement).parentElement;
+            if (parent) {
+              parent.innerHTML = `<div style="font-family: Poppins; font-size: 1.5rem; font-weight: 700; color: ${c.accent};">${c.title.split(' ')[0]}</div>`;
+            }
+          }}
         />
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-          background: `linear-gradient(to bottom, transparent 40%, var(--navy-mid) 100%)`,
-        }} />
-        <div style={{ position: 'absolute', top: 14, left: 14, fontFamily: 'DM Mono', fontSize: '0.55rem', color: c.accent, letterSpacing: '0.1em', background: c.accent + '15', border: `1px solid ${c.accent}30`, padding: '3px 10px', textTransform: 'uppercase', borderRadius: 8 }}>
-          {c.cat}
-        </div>
-        <div style={{ position: 'absolute', bottom: 14, right: 14, fontFamily: 'Poppins', fontSize: '2rem', fontWeight: 900, color: c.accent, opacity: 0.2, lineHeight: 1 }}>
+        <div style={{ 
+          position: 'absolute', 
+          top: 14, 
+          right: 14, 
+          fontFamily: 'Poppins', 
+          fontSize: '1.8rem', 
+          fontWeight: 900, 
+          color: c.accent, 
+          opacity: 0.15, 
+          lineHeight: 1 
+        }}>
           {c.num}
         </div>
       </div>

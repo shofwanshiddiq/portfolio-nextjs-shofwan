@@ -53,21 +53,8 @@ export default function Navbar() {
         ))}
       </nav>
 
-      {/* Center logo */}
-      <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{
-        background: 'none', border: 'none', cursor: 'pointer',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
-      }}>
-        <div style={{
-          width: 44, height: 44,
-          border: '1px solid rgba(201,168,76,0.5)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontFamily: 'Poppins', fontSize: '1rem', fontWeight: 700,
-          color: '#c9a84c', letterSpacing: '-0.02em',
-          background: 'rgba(201,168,76,0.06)',
-          borderRadius: 8,
-        }}>SS</div>
-      </button>
+      {/* Center - Empty space for balance */}
+      <div style={{ width: 44 }} />
 
       {/* Right nav */}
       <nav style={{ display: 'flex', gap: 36 }}>

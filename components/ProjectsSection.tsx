@@ -27,13 +27,12 @@ const projects = [
 ];
 
 const tabs = [
-  { id: 'all' as Cat, label: 'All Work' },
   { id: 'frontend' as Cat, label: 'Front—End' },
   { id: 'backend' as Cat, label: 'Back—End' },
   { id: 'cybersecurity' as Cat, label: 'Cyber—Sec' },
 ];
 
-function ProjectCard({ p, i }: { p: typeof projects[0]; i: number }) {
+function ProjectCard({ p, i, onOpenModal }: { p: typeof projects[0]; i: number; onOpenModal: (project: typeof projects[0]) => void }) {
   const [hov, setHov] = useState(false);
   return (
     <motion.div
@@ -50,30 +49,41 @@ function ProjectCard({ p, i }: { p: typeof projects[0]; i: number }) {
         border: `1px solid ${hov ? p.accent + '40' : 'rgba(255,255,255,0.05)'}`,
         overflow: 'hidden', cursor: 'pointer', transition: 'border-color 0.3s',
         borderRadius: 8,
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      {/* Image */}
-      <div style={{ height: 200, overflow: 'hidden', background: 'var(--navy-light)', position: 'relative' }}>
-        <motion.img
-          src={p.img} alt={p.title}
-          animate={{ scale: hov ? 1.06 : 1 }}
-          transition={{ duration: 0.5 }}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', filter: `saturate(${hov ? 1.1 : 0.7}) brightness(${hov ? 0.9 : 0.7})`, transition: 'filter 0.5s' }}
-          onError={e => { (e.target as HTMLImageElement).parentElement!.style.background = `radial-gradient(circle at 30% 50%, ${p.accent}20, var(--navy-light))`; (e.target as HTMLImageElement).style.display = 'none'; }}
-        />
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-          background: `linear-gradient(to bottom, transparent 40%, var(--navy-mid) 100%)`,
-        }} />
-        <div style={{ position: 'absolute', top: 14, left: 14, fontFamily: 'DM Mono', fontSize: '0.55rem', color: p.accent, letterSpacing: '0.1em', background: p.accent + '15', border: `1px solid ${p.accent}30`, padding: '3px 10px', textTransform: 'uppercase', borderRadius: 8 }}>
-          {p.cat}
+      {/* Image - clickable to open modal - Hide for cybersecurity */}
+      {p.cat !== 'cybersecurity' && (
+        <div 
+          onClick={() => onOpenModal(p)}
+          style={{ height: 300, overflow: 'hidden', background: 'var(--navy-light)', position: 'relative', cursor: 'pointer' }}
+        >
+          <motion.img
+            src={p.img} alt={p.title}
+            animate={{ scale: hov ? 1.06 : 1 }}
+            transition={{ duration: 0.5 }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', filter: `saturate(${hov ? 1.1 : 0.7}) brightness(${hov ? 0.9 : 0.7})`, transition: 'filter 0.5s' }}
+            onError={e => { (e.target as HTMLImageElement).parentElement!.style.background = `radial-gradient(circle at 30% 50%, ${p.accent}20, var(--navy-light))`; (e.target as HTMLImageElement).style.display = 'none'; }}
+          />
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+            background: `linear-gradient(to bottom, transparent 40%, var(--navy-mid) 100%)`,
+          }} />
+          <div style={{ position: 'absolute', top: 14, left: 14, fontFamily: 'DM Mono', fontSize: '0.55rem', color: p.accent, letterSpacing: '0.1em', background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(10px)', border: `1px solid ${p.accent}50`, padding: '4px 12px', textTransform: 'uppercase', borderRadius: 8 }}>
+            {p.cat}
+          </div>
+          <div style={{ position: 'absolute', bottom: 14, right: 14, fontFamily: 'Poppins', fontSize: '2rem', fontWeight: 900, color: p.accent, opacity: 0.2, lineHeight: 1 }}>
+            {p.num}
+          </div>
         </div>
-        <div style={{ position: 'absolute', bottom: 14, right: 14, fontFamily: 'Poppins', fontSize: '2rem', fontWeight: 900, color: p.accent, opacity: 0.2, lineHeight: 1 }}>
-          {p.num}
-        </div>
-      </div>
+      )}
 
-      <div style={{ padding: '24px 24px 20px' }}>
+      {/* Content - clickable to open modal */}
+      <div 
+        onClick={() => onOpenModal(p)}
+        style={{ padding: '24px 24px 20px', flex: 1, display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
+      >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
           <h3 style={{
             fontFamily: 'Poppins', fontWeight: 700, fontSize: '1.05rem',
@@ -82,7 +92,7 @@ function ProjectCard({ p, i }: { p: typeof projects[0]; i: number }) {
           <span style={{ fontFamily: 'DM Mono', fontSize: '0.55rem', opacity: 0.35, marginLeft: 8, flexShrink: 0 }}>{p.year}</span>
         </div>
         <p style={{ fontFamily: 'DM Sans', fontSize: '0.75rem', lineHeight: 1.75, opacity: 0.55, marginBottom: 18 }}>{p.desc}</p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 18 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 'auto' }}>
           {p.tech.map(t => (
             <span key={t} style={{
               fontFamily: 'DM Mono', fontSize: '0.55rem', letterSpacing: '0.06em',
@@ -92,13 +102,16 @@ function ProjectCard({ p, i }: { p: typeof projects[0]; i: number }) {
             }}>{t}</span>
           ))}
         </div>
+      </div>
 
-        {/* Buttons */}
+      {/* Buttons - at bottom */}
+      <div style={{ padding: '0 24px 24px', marginTop: 'auto' }}>
         <div style={{ display: 'flex', gap: 8 }}>
           <a
             href={p.git}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
             style={{
               flex: 1,
               padding: '10px',
@@ -133,6 +146,7 @@ function ProjectCard({ p, i }: { p: typeof projects[0]; i: number }) {
               href={p.website}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               style={{
                 flex: 1,
                 padding: '10px',
@@ -173,10 +187,11 @@ function ProjectCard({ p, i }: { p: typeof projects[0]; i: number }) {
 }
 
 export default function ProjectsSection() {
-  const [active, setActive] = useState<Cat>('all');
+  const [active, setActive] = useState<Cat>('frontend');
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
-  const filtered = active === 'all' ? projects : projects.filter(p => p.cat === active);
+  const filtered = projects.filter(p => p.cat === active);
 
   return (
     <section id="projects" ref={ref} style={{ background: 'var(--navy-deep)', padding: '120px 60px', minHeight: '100vh' }}>
@@ -223,7 +238,7 @@ export default function ProjectsSection() {
             >
               {tab.label}
               <span style={{ marginLeft: 8, opacity: 0.4, fontSize: '0.5rem' }}>
-                ({tab.id === 'all' ? projects.length : projects.filter(p => p.cat === tab.id).length})
+                ({projects.filter(p => p.cat === tab.id).length})
               </span>
             </button>
           ))}
@@ -232,10 +247,237 @@ export default function ProjectsSection() {
         {/* Grid */}
         <motion.div layout style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 20 }}>
           <AnimatePresence mode="popLayout">
-            {filtered.map((p, i) => <ProjectCard key={p.title} p={p} i={i} />)}
+            {filtered.map((p, i) => <ProjectCard key={p.title} p={p} i={i} onOpenModal={setSelectedProject} />)}
           </AnimatePresence>
         </motion.div>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              style={{
+                position: 'fixed',
+                inset: 0,
+                background: 'rgba(0, 0, 0, 0.85)',
+                zIndex: 999,
+                backdropFilter: 'blur(8px)',
+              }}
+            />
+            
+            {/* Modal Container - Centered with Flexbox */}
+            <div
+              style={{
+                position: 'fixed',
+                inset: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '20px',
+                zIndex: 1000,
+                pointerEvents: 'none',
+              }}
+            >
+              {/* Modal Content */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  maxWidth: 500,
+                  maxHeight: '90vh',
+                  overflowY: 'auto',
+                  background: 'var(--navy-mid)',
+                  border: `2px solid ${selectedProject.accent}40`,
+                  borderRadius: 12,
+                  boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px ${selectedProject.accent}20`,
+                  pointerEvents: 'auto',
+                }}
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  style={{
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    background: 'rgba(0, 0, 0, 0.5)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    color: 'var(--text-primary)',
+                    fontSize: '1.5rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.3s',
+                    zIndex: 10,
+                  }}
+                  onMouseEnter={e => {
+                    (e.target as HTMLElement).style.background = selectedProject.accent;
+                    (e.target as HTMLElement).style.color = '#000';
+                  }}
+                  onMouseLeave={e => {
+                    (e.target as HTMLElement).style.background = 'rgba(0, 0, 0, 0.5)';
+                    (e.target as HTMLElement).style.color = 'var(--text-primary)';
+                  }}
+                >
+                  ×
+                </button>
+
+                {/* Image */}
+                <div style={{ height: 300, overflow: 'hidden', background: 'var(--navy-light)', position: 'relative' }}>
+                  <img
+                    src={selectedProject.img}
+                    alt={selectedProject.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    onError={e => { 
+                      (e.target as HTMLImageElement).parentElement!.style.background = `radial-gradient(circle at 30% 50%, ${selectedProject.accent}20, var(--navy-light))`;
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                  <div style={{
+                    position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+                    background: `linear-gradient(to bottom, transparent 50%, var(--navy-mid) 100%)`,
+                  }} />
+                </div>
+
+                {/* Content */}
+                <div style={{ padding: '32px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+                    <span style={{
+                      fontFamily: 'DM Mono', fontSize: '0.6rem', color: selectedProject.accent,
+                      letterSpacing: '0.1em', background: selectedProject.accent + '15',
+                      border: `1px solid ${selectedProject.accent}30`, padding: '4px 12px',
+                      textTransform: 'uppercase', borderRadius: 8,
+                    }}>
+                      {selectedProject.cat}
+                    </span>
+                    <span style={{ fontFamily: 'DM Mono', fontSize: '0.6rem', opacity: 0.4 }}>
+                      {selectedProject.year}
+                    </span>
+                  </div>
+
+                  <h2 style={{
+                    fontFamily: 'Poppins', fontWeight: 700, fontSize: '1.6rem',
+                    color: selectedProject.accent, marginBottom: 16, lineHeight: 1.2,
+                  }}>
+                    {selectedProject.title}
+                  </h2>
+
+                  <p style={{
+                    fontFamily: 'DM Sans', fontSize: '0.9rem', lineHeight: 1.7,
+                    opacity: 0.7, marginBottom: 24,
+                  }}>
+                    {selectedProject.desc}
+                  </p>
+
+                  <div style={{ marginBottom: 28 }}>
+                    <h3 style={{
+                      fontFamily: 'DM Mono', fontSize: '0.65rem', letterSpacing: '0.15em',
+                      color: 'var(--accent-cyan)', textTransform: 'uppercase', marginBottom: 14,
+                    }}>
+                      Technologies Used
+                    </h3>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                      {selectedProject.tech.map(t => (
+                        <span key={t} style={{
+                          fontFamily: 'DM Mono', fontSize: '0.6rem', letterSpacing: '0.06em',
+                          background: selectedProject.accent + '15', border: `1px solid ${selectedProject.accent}30`,
+                          color: selectedProject.accent, padding: '5px 12px', textTransform: 'uppercase',
+                          borderRadius: 8,
+                        }}>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div style={{ display: 'flex', gap: 10 }}>
+                    <a
+                      href={selectedProject.git}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        flex: 1,
+                        padding: '12px',
+                        textAlign: 'center',
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.15)',
+                        color: 'var(--text-primary)',
+                        fontFamily: 'DM Mono',
+                        fontSize: '0.65rem',
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        textDecoration: 'none',
+                        transition: 'all 0.3s',
+                        display: 'block',
+                        borderRadius: 8,
+                      }}
+                      onMouseEnter={e => {
+                        (e.target as HTMLElement).style.background = selectedProject.accent + '20';
+                        (e.target as HTMLElement).style.borderColor = selectedProject.accent + '50';
+                        (e.target as HTMLElement).style.color = selectedProject.accent;
+                      }}
+                      onMouseLeave={e => {
+                        (e.target as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
+                        (e.target as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)';
+                        (e.target as HTMLElement).style.color = 'var(--text-primary)';
+                      }}
+                    >
+                      View Repository →
+                    </a>
+                    {selectedProject.website && (
+                      <a
+                        href={selectedProject.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          flex: 1,
+                          padding: '12px',
+                          textAlign: 'center',
+                          background: selectedProject.accent,
+                          border: `1px solid ${selectedProject.accent}`,
+                          color: '#000',
+                          fontFamily: 'DM Mono',
+                          fontSize: '0.65rem',
+                          letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          transition: 'all 0.3s',
+                          display: 'block',
+                          borderRadius: 8,
+                          fontWeight: 600,
+                        }}
+                        onMouseEnter={e => {
+                          (e.target as HTMLElement).style.transform = 'translateY(-2px)';
+                          (e.target as HTMLElement).style.boxShadow = `0 10px 20px ${selectedProject.accent}40`;
+                        }}
+                        onMouseLeave={e => {
+                          (e.target as HTMLElement).style.transform = 'translateY(0)';
+                          (e.target as HTMLElement).style.boxShadow = 'none';
+                        }}
+                      >
+                        Visit Website →
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
