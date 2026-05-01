@@ -48,7 +48,7 @@ export default function ContactSection() {
         </motion.div>
 
         {/* Main two-col */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 100, alignItems: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 100, alignItems: 'center' }} className="contact-grid">
 
           {/* Left */}
           <motion.div
@@ -73,13 +73,15 @@ export default function ContactSection() {
             </p>
 
             {/* Availability */}
-            
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <motion.div
                 animate={{ opacity: [1, 0.3, 1] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
                 style={{ width: 7, height: 7, borderRadius: '50%', background: '#7ae86e' }}
               />
-            </motion.div>
+              <span style={{ fontFamily: 'DM Mono', fontSize: '0.65rem', letterSpacing: '0.08em', opacity: 0.5 }}>Available for work</span>
+            </div>
+          </motion.div>
 
           {/* Right: contact list */}
           <div>
@@ -138,6 +140,7 @@ export default function ContactSection() {
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ delay: 0.9 }}
+        className="contact-footer"
         style={{
           maxWidth: 1200, margin: '80px auto 0',
           paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.06)',

@@ -117,3 +117,146 @@ body::before {
   position: absolute;
   pointer-events: none;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Navbar mobile padding - reduce height */
+  header {
+    padding: 12px 20px !important;
+  }
+
+  /* Logo smaller on mobile */
+  header img[alt="SS Logo"] {
+    height: 32px !important;
+  }
+
+  /* Section padding adjustments - add top padding for navbar */
+  section {
+    padding: 100px 24px 60px 24px !important;
+  }
+
+  /* About section grid - stack vertically */
+  .about-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Profile photo smaller on mobile */
+  /* #about img[alt="Shofwan Shiddiq"] {
+    width: 100px !important;
+    height: 100px !important;
+  } */
+
+  /* Tech stack grid - 4 columns on mobile, smaller icons */
+  #about > div > div:last-of-type > div:last-of-type {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  #about > div > div:last-of-type > div:last-of-type > div {
+    padding: 12px 8px !important;
+  }
+
+  #about > div > div:last-of-type > div:last-of-type img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  #about > div > div:last-of-type > div:last-of-type span {
+    font-size: 0.5rem !important;
+  }
+
+  /* Project and course cards - single column */
+  #projects > div > div:last-of-type,
+  #courses > div > div:last-of-type {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Typography adjustments */
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  /* Marquee slower on mobile */
+  .marquee-track {
+    animation-duration: 40s !important;
+  }
+
+  /* Contact section - ensure content is visible */
+  #contact {
+    padding-top: 100px !important;
+    min-height: 100vh !important;
+  }
+
+  /* Contact grid - stack vertically */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* Contact footer - stack vertically */
+  .contact-footer {
+    flex-direction: column !important;
+    gap: 20px !important;
+    text-align: center !important;
+  }
+
+  .contact-footer > div:first-child {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  /* Courses and Projects tabs - responsive */
+  #courses > div > div:nth-child(2),
+  #projects > div > div:nth-child(2) {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  #courses > div > div:nth-child(2) > button,
+  #projects > div > div:nth-child(2) > button {
+    padding: 10px 16px !important;
+    font-size: 0.55rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  #courses > div > div:nth-child(2) > button > span,
+  #projects > div > div:nth-child(2) > button > span {
+    font-size: 0.45rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices */
+  section {
+    padding: 90px 20px 50px 20px !important;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  /* Tech stack grid - 3 columns on very small screens */
+  #about > div > div:last-of-type > div:last-of-type {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Logo even smaller */
+  header img[alt="SS Logo"] {
+    height: 28px !important;
+  }
+
+  /* Navbar even more compact */
+  header {
+    padding: 10px 16px !important;
+  }
+}

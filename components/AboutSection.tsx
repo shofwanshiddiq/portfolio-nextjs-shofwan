@@ -30,7 +30,7 @@ export default function AboutSection() {
         </motion.div>
 
         {/* MAIN BENTO ROW - Profile Left, Experience Middle, Courses Right */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginBottom: 60 }}>
+        <div className="about-cards-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginBottom: 60 }}>
 
           {/* Left: Profile card */}
           <motion.div
@@ -75,17 +75,21 @@ export default function AboutSection() {
             <div style={{ width: '100%', height: 1, background: 'rgba(255,255,255,0.06)' }} />
 
             <div style={{ width: '100%', textAlign: 'left' }}>
-              <p style={{ fontFamily: 'DM Sans', fontSize: '0.85rem', lineHeight: 1.9, opacity: 0.7, marginBottom: 16 }}>
-                Software Engineer with <span style={{ color: 'var(--accent-gold)', fontWeight: 500 }}>4 years of experience</span> in developing full-stack solutions for Corporate Support Systems, Enterprise Resource Planning (ERP), Customer Relationship Management (CRM), E-Commerce platforms, and cross-platform mobile applications.
+              <p style={{ fontFamily: 'DM Sans', fontSize: '0.85rem', lineHeight: 1.9, opacity: 0.7, marginBottom: 16, display: 'flex', gap: 10 }}>
+                <span style={{ color: 'var(--accent-gold)', fontSize: '1.2rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                <span>Software Engineer with <span style={{ color: 'var(--accent-gold)', fontWeight: 500 }}>4 years of experience</span> in developing full-stack solutions for Corporate Support Systems, Enterprise Resource Planning (ERP), Customer Relationship Management (CRM), E-Commerce platforms, and cross-platform mobile applications.</span>
               </p>
-              <p style={{ fontFamily: 'DM Sans', fontSize: '0.85rem', lineHeight: 1.9, opacity: 0.7, marginBottom: 16 }}>
-                Specialized in the <span style={{ color: '#7b6cf6', fontWeight: 500 }}>.NET ecosystem</span>, including .NET Framework, .NET Core, ASP.NET MVC, ASP.NET Web API, .NET MAUI, alongside integrating Microsoft SQL Server, managing databases, and implementing stored procedures and functions to deliver scalable, end-to-end solutions.
+              <p style={{ fontFamily: 'DM Sans', fontSize: '0.85rem', lineHeight: 1.9, opacity: 0.7, marginBottom: 16, display: 'flex', gap: 10 }}>
+                <span style={{ color: 'var(--accent-gold)', fontSize: '1.2rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                <span>Specialized in the <span style={{ color: '#7b6cf6', fontWeight: 500 }}>.NET ecosystem</span>, including .NET Framework, .NET Core, ASP.NET MVC, ASP.NET Web API, .NET MAUI, alongside integrating Microsoft SQL Server, managing databases, and implementing stored procedures and functions to deliver scalable, end-to-end solutions.</span>
               </p>
-              <p style={{ fontFamily: 'DM Sans', fontSize: '0.85rem', lineHeight: 1.9, opacity: 0.7, marginBottom: 16 }}>
-                Learning experience in <span style={{ color: '#e85a8a', fontWeight: 500 }}>Cybersecurity</span>, covering topics such as penetration testing fundamentals, network security, vulnerability assessment, cryptographic failures, and web security, with hands-on security testing using Kali Linux.
+              <p style={{ fontFamily: 'DM Sans', fontSize: '0.85rem', lineHeight: 1.9, opacity: 0.7, marginBottom: 16, display: 'flex', gap: 10 }}>
+                <span style={{ color: 'var(--accent-gold)', fontSize: '1.2rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                <span>Learning experience in <span style={{ color: '#e85a8a', fontWeight: 500 }}>Cybersecurity</span>, covering topics such as penetration testing fundamentals, network security, vulnerability assessment, cryptographic failures, and web security, with hands-on security testing using Kali Linux.</span>
               </p>
-              <p style={{ fontFamily: 'DM Sans', fontSize: '0.85rem', lineHeight: 1.9, opacity: 0.7 }}>
-                Also experienced in building <span style={{ color: '#4dd9e8', fontWeight: 500 }}>microservices</span>, implementing message brokers using RabbitMQ, performing gRPC requests & creating proto file, using Nginx for load balancing, and writing unit tests. Experience working with Golang, NodeJS, Python, PHP for backend development, React, Angular for front-end development, REST & GraphQL for API Integration with MySQL, MongoDB, Redis as database and Docker for containerization.
+              <p style={{ fontFamily: 'DM Sans', fontSize: '0.85rem', lineHeight: 1.9, opacity: 0.7, display: 'flex', gap: 10 }}>
+                <span style={{ color: 'var(--accent-gold)', fontSize: '1.2rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                <span>Also experienced in building <span style={{ color: '#4dd9e8', fontWeight: 500 }}>microservices</span>, implementing message brokers using RabbitMQ, performing gRPC requests & creating proto file, using Nginx for load balancing, and writing unit tests. Experience working with Golang, NodeJS, Python, PHP for backend development, React, Angular for front-end development, REST & GraphQL for API Integration with MySQL, MongoDB, Redis as database and Docker for containerization.</span>
               </p>
             </div>
 
@@ -155,10 +159,19 @@ export default function AboutSection() {
                       }}>{tech}</span>
                     ))}
                   </div>
-                  <ul style={{ fontFamily: 'DM Sans', fontSize: '0.8rem', lineHeight: 1.8, opacity: 0.6, paddingLeft: 18, margin: 0 }}>
-                    <li style={{ marginBottom: 8 }}>Manage and maintain internal support system applications using .NET Framework and Serenity Core, with SQL Server and REST API integration.</li>
-                    <li style={{ marginBottom: 8 }}>Revamp and upgrade legacy applications from .NET Framework to .NET Core by rebuilding systems and redesigning into microservices architecture.</li>
-                    <li>Collaborate with users to understand business requirements and translate them into technical solutions.</li>
+                  <ul style={{ fontFamily: 'DM Sans', fontSize: '0.8rem', lineHeight: 1.8, opacity: 0.6, paddingLeft: 0, margin: 0, listStyle: 'none' }}>
+                    <li style={{ marginBottom: 8, display: 'flex', gap: 8 }}>
+                      <span style={{ color: '#c9a84c', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                      <span>Manage and maintain internal support system applications using .NET Framework and Serenity Core, with SQL Server and REST API integration.</span>
+                    </li>
+                    <li style={{ marginBottom: 8, display: 'flex', gap: 8 }}>
+                      <span style={{ color: '#c9a84c', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                      <span>Revamp and upgrade legacy applications from .NET Framework to .NET Core by rebuilding systems and redesigning into microservices architecture.</span>
+                    </li>
+                    <li style={{ display: 'flex', gap: 8 }}>
+                      <span style={{ color: '#c9a84c', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                      <span>Collaborate with users to understand business requirements and translate them into technical solutions.</span>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -196,11 +209,23 @@ export default function AboutSection() {
                       }}>{tech}</span>
                     ))}
                   </div>
-                  <ul style={{ fontFamily: 'DM Sans', fontSize: '0.8rem', lineHeight: 1.8, opacity: 0.6, paddingLeft: 18, margin: 0 }}>
-                    <li style={{ marginBottom: 8 }}>Designed and built an e-commerce application, integrating it with MinovaES accounting and logistics modules, supporting multiple retail clients across Indonesia.</li>
-                    <li style={{ marginBottom: 8 }}>Built the MinovaHR mobile app with location-based attendance tracking, leave workflows, and logistics management. Deployed to 500+ employees.</li>
-                    <li style={{ marginBottom: 8 }}>Managed MinovaES front-end web application using ExtJS. Currently used daily by 20+ companies and 10,000+ users across Indonesia.</li>
-                    <li>Designed and built a web application for client support, enabling efficient ticketing system management.</li>
+                  <ul style={{ fontFamily: 'DM Sans', fontSize: '0.8rem', lineHeight: 1.8, opacity: 0.6, paddingLeft: 0, margin: 0, listStyle: 'none' }}>
+                    <li style={{ marginBottom: 8, display: 'flex', gap: 8 }}>
+                      <span style={{ color: '#4dd9e8', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                      <span>Designed and built an e-commerce application, integrating it with MinovaES accounting and logistics modules, supporting multiple retail clients across Indonesia.</span>
+                    </li>
+                    <li style={{ marginBottom: 8, display: 'flex', gap: 8 }}>
+                      <span style={{ color: '#4dd9e8', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                      <span>Built the MinovaHR mobile app with location-based attendance tracking, leave workflows, and logistics management. Deployed to 500+ employees.</span>
+                    </li>
+                    <li style={{ marginBottom: 8, display: 'flex', gap: 8 }}>
+                      <span style={{ color: '#4dd9e8', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                      <span>Managed MinovaES front-end web application using ExtJS. Currently used daily by 20+ companies and 10,000+ users across Indonesia.</span>
+                    </li>
+                    <li style={{ display: 'flex', gap: 8 }}>
+                      <span style={{ color: '#4dd9e8', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                      <span>Designed and built a web application for client support, enabling efficient ticketing system management.</span>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -255,8 +280,9 @@ export default function AboutSection() {
                       }}>{tech}</span>
                     ))}
                   </div>
-                  <p style={{ fontFamily: 'DM Sans', fontSize: '0.75rem', lineHeight: 1.7, opacity: 0.6, marginBottom: 14 }}>
-                    Learning cybersecurity fundamentals and offensive security practices, including governance, networking, cryptography, and penetration testing.
+                  <p style={{ fontFamily: 'DM Sans', fontSize: '0.75rem', lineHeight: 1.7, opacity: 0.6, marginBottom: 14, display: 'flex', gap: 8 }}>
+                    <span style={{ color: '#e85a8a', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                    <span>Learning cybersecurity fundamentals and offensive security practices, including governance, networking, cryptography, and penetration testing.</span>
                   </p>
                   <div style={{ display: 'flex', gap: 6 }}>
                     <a
@@ -333,8 +359,9 @@ export default function AboutSection() {
                       }}>{tech}</span>
                     ))}
                   </div>
-                  <p style={{ fontFamily: 'DM Sans', fontSize: '0.75rem', lineHeight: 1.7, opacity: 0.6, marginBottom: 14 }}>
-                    Focusing on golang backend development integrated with MySQL and MongoDB through RESTful API, utilizing Docker for containerization.
+                  <p style={{ fontFamily: 'DM Sans', fontSize: '0.75rem', lineHeight: 1.7, opacity: 0.6, marginBottom: 14, display: 'flex', gap: 8 }}>
+                    <span style={{ color: '#4dd9e8', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                    <span>Focusing on golang backend development integrated with MySQL and MongoDB through RESTful API, utilizing Docker for containerization.</span>
                   </p>
                   <div style={{ display: 'flex', gap: 6 }}>
                     <a
@@ -405,8 +432,9 @@ export default function AboutSection() {
                       }}>{tech}</span>
                     ))}
                   </div>
-                  <p style={{ fontFamily: 'DM Sans', fontSize: '0.75rem', lineHeight: 1.7, opacity: 0.6, marginBottom: 14 }}>
-                    Intensive English for professionals classes, focusing on workplace communication, professional writing, and presentations.
+                  <p style={{ fontFamily: 'DM Sans', fontSize: '0.75rem', lineHeight: 1.7, opacity: 0.6, marginBottom: 14, display: 'flex', gap: 8 }}>
+                    <span style={{ color: '#7ae86e', fontSize: '1rem', lineHeight: 1, marginTop: 2 }}>•</span>
+                    <span>Intensive English for professionals classes, focusing on workplace communication, professional writing, and presentations.</span>
                   </p>
                   <div style={{ display: 'flex', gap: 6 }}>
                     <a
