@@ -35,30 +35,34 @@ export default function Navbar() {
         transition: 'all 0.4s ease',
       }}
     >
-      {/* Left nav */}
-      <nav style={{ display: 'flex', gap: 36 }}>
-        {navItems.slice(0, 2).map(item => (
-          <button key={item} onClick={() => scrollTo(item)} style={{
-            background: 'none', border: 'none', cursor: 'pointer',
-            fontFamily: 'DM Sans', fontSize: '0.78rem', fontWeight: 400,
-            letterSpacing: '0.08em', textTransform: 'uppercase',
-            color: active === item ? '#c9a84c' : 'rgba(232,234,240,0.55)',
-            transition: 'color 0.3s',
+      {/* Logo - Left side */}
+      <button 
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        style={{
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <img 
+          src="/sslogo.png" 
+          alt="SS Logo" 
+          style={{ 
+            height: 40, 
+            width: 'auto',
+            transition: 'transform 0.3s',
           }}
-          onMouseEnter={e => (e.target as HTMLElement).style.color = '#c9a84c'}
-          onMouseLeave={e => (e.target as HTMLElement).style.color = active === item ? '#c9a84c' : 'rgba(232,234,240,0.55)'}
-          >
-            {item}
-          </button>
-        ))}
-      </nav>
+          onMouseEnter={e => (e.target as HTMLElement).style.transform = 'scale(1.1)'}
+          onMouseLeave={e => (e.target as HTMLElement).style.transform = 'scale(1)'}
+        />
+      </button>
 
-      {/* Center - Empty space for balance */}
-      <div style={{ width: 44 }} />
-
-      {/* Right nav */}
+      {/* Right nav - All navigation items */}
       <nav style={{ display: 'flex', gap: 36 }}>
-        {navItems.slice(2).map(item => (
+        {navItems.map(item => (
           <button key={item} onClick={() => scrollTo(item)} style={{
             background: 'none', border: 'none', cursor: 'pointer',
             fontFamily: 'DM Sans', fontSize: '0.78rem', fontWeight: 400,

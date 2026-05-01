@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Shofwan Shiddiq — Software Engineer",
   description: "Software Engineer specializing in full-stack development, .NET ecosystem, and cybersecurity.",
+  icons: {
+    icon: '/sslogo.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
